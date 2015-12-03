@@ -755,7 +755,7 @@ public abstract class SerialDate implements Comparable,
             case SerialDate.FOURTH_WEEK_IN_MONTH: return "Fourth";
             case SerialDate.LAST_WEEK_IN_MONTH: return "Last";
             default:
-                return "SerialDate.weekInMonthToString(): invalid code.";
+                throw new IllegalArgumentException("SerialDate.weekInMonthToString(): invalid code.");
         }
 
     }
