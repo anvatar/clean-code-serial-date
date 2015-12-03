@@ -426,11 +426,11 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals("Nearest", relativeToString(NEAREST));
         assertEquals("Following", relativeToString(FOLLOWING));
 
-        //todo try {
-        // relativeToString(-1000);
-        // fail("Invalid relative code should throw exception");
-        // } catch (IllegalArgumentException e) {
-        // }
+        try {
+            relativeToString(-1000);
+            fail("Invalid relative code should throw exception");
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     public void testCreateInstanceFromDDMMYYY() throws Exception {

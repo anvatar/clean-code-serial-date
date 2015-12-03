@@ -775,7 +775,7 @@ public abstract class SerialDate implements Comparable,
             case SerialDate.PRECEDING: return "Preceding";
             case SerialDate.NEAREST: return "Nearest";
             case SerialDate.FOLLOWING: return "Following";
-            default: return "ERROR : Relative To String";
+            default: throw new IllegalArgumentException("ERROR : Relative To String");
         }
 
     }
