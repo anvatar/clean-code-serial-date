@@ -457,11 +457,11 @@ public abstract class SerialDate implements Comparable,
         if ((result < 1) || (result > 12)) {
             result = -1;
             for (int i = 0; i < monthNames.length; i++) {
-                if (s.equals(shortMonthNames[i])) {
+                if (s.equalsIgnoreCase(shortMonthNames[i])) {
                     result = i + 1;
                     break;
                 }
-                if (s.equals(monthNames[i])) {
+                if (s.equalsIgnoreCase(monthNames[i])) {
                     result = i + 1;
                     break;
                 }
