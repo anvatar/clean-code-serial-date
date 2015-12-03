@@ -150,8 +150,8 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(NOVEMBER, stringToMonthCode("11"));
         assertEquals(DECEMBER, stringToMonthCode("12"));
 
-        //todo assertEquals(-1, stringToMonthCode("0"));
-        // assertEquals(-1, stringToMonthCode("13"));
+        assertEquals(-1, stringToMonthCode("0"));
+        assertEquals(-1, stringToMonthCode("13"));
 
         assertEquals(-1, stringToMonthCode("Hello"));
 
