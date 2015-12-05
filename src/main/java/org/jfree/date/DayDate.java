@@ -144,9 +144,6 @@ public abstract class DayDate implements Comparable, Serializable {
         }
     }
 
-    protected DayDate() {
-    }
-
     /**
      * Converts the supplied string to a day of the week.
      *
