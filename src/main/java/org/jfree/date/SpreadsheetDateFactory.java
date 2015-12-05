@@ -26,10 +26,10 @@ public class SpreadsheetDateFactory extends DayDateFactory {
     }
 
     protected int _getMinumumYear() {
-        return DayDate.MINIMUM_YEAR_SUPPORTED;
+        return SpreadsheetDate.MINIMUM_YEAR_SUPPORTED;
     }
 
     protected int _getMaximumYear() {
-        return DayDate.MAXIMUM_YEAR_SUPPORTED;
+        return SpreadsheetDate.MAXIMUM_YEAR_SUPPORTED;
     }
 }
