@@ -61,9 +61,6 @@ public abstract class DayDate implements Comparable, Serializable {
     public static final DateFormatSymbols
             DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
 
-    private static final int[] LAST_DAY_OF_MONTH =
-            {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
     public enum WeekInMonth {
         FIRST(1), SECOND(2), THIRD(3), FOURTH(4), LAST(0);
         public final int index;
@@ -113,7 +110,7 @@ public abstract class DayDate implements Comparable, Serializable {
      */
     public static int lastDayOfMonth(final Month month, final int yyyy) {
 
-        final int result = LAST_DAY_OF_MONTH[month.index];
+        final int result = month.lastDay();
         if (month != Month.FEBRUARY) {
             return result;
         }
