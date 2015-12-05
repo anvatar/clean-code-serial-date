@@ -115,20 +115,8 @@ public abstract class DayDate implements Comparable, Serializable {
             return month.lastDay();
     }
 
-    /**
-     * Creates a new date by adding the specified number of days to the base
-     * date.
-     *
-     * @param days the number of days to add (can be negative).
-     * @param base the base date.
-     *
-     * @return a new date.
-     */
-    public static DayDate addDays(final int days, final DayDate base) {
-
-        final int serialDayNumber = base.toSerial() + days;
-        return DayDateFactory.makeDate(serialDayNumber);
-
+    public DayDate addDays(int days) {
+        return DayDateFactory.makeDate(toSerial() + days);
     }
 
     /**
@@ -203,7 +191,7 @@ public abstract class DayDate implements Comparable, Serializable {
             adjust = -7 + Math.max(0, targetWeekday.index - baseDOW);
         }
 
-        return DayDate.addDays(adjust, base);
+        return base.addDays(adjust);
 
     }
 
@@ -229,7 +217,7 @@ public abstract class DayDate implements Comparable, Serializable {
             adjust = Math.max(0, targetWeekday.index - baseDOW);
         }
 
-        return DayDate.addDays(adjust, base);
+        return base.addDays(adjust);
     }
 
     /**
@@ -250,7 +238,7 @@ public abstract class DayDate implements Comparable, Serializable {
         int adjust = positiveDelta % 7;
         if (adjust > 3)
             adjust -= 7;
-        return DayDate.addDays(adjust, base);
+        return base.addDays(adjust);
 
     }
 

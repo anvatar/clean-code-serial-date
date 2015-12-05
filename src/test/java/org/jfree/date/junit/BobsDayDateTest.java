@@ -256,10 +256,10 @@ public class BobsDayDateTest extends TestCase {
 
     public void testAddDays() throws Exception {
         DayDate newYears = d(1, Month.JANUARY, 1900);
-        assertEquals(d(2, Month.JANUARY, 1900), addDays(1, newYears));
-        assertEquals(d(1, Month.FEBRUARY, 1900), addDays(31, newYears));
-        assertEquals(d(1, Month.JANUARY, 1901), addDays(365, newYears));
-        assertEquals(d(31, Month.DECEMBER, 1904), addDays(5 * 365, newYears));
+        assertEquals(d(2, Month.JANUARY, 1900), newYears.addDays(1));
+        assertEquals(d(1, Month.FEBRUARY, 1900), newYears.addDays(31));
+        assertEquals(d(1, Month.JANUARY, 1901), newYears.addDays(365));
+        assertEquals(d(31, Month.DECEMBER, 1904), newYears.addDays(5 * 365));
     }
 
     private static SpreadsheetDate d(int day, Month month, int year) { return new SpreadsheetDate(day, month, year); }
