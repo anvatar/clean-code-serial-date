@@ -130,20 +130,10 @@ public abstract class DayDate implements Comparable, Serializable {
         return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
     }
 
-    /**
-     * Creates a new date by adding the specified number of years to the base
-     * date.
-     *
-     * @param years the number of years to add (can be negative).
-     * @param base  the base date.
-     *
-     * @return A new date.
-     */
-    public static DayDate addYears(final int years, final DayDate base) {
-
-        final int baseY = base.getYear();
-        final Month baseM = base.getMonth();
-        final int baseD = base.getDayOfMonth();
+    public DayDate addYears(final int years) {
+        final int baseY = getYear();
+        final Month baseM = getMonth();
+        final int baseD = getDayOfMonth();
 
         final int targetY = baseY + years;
         final int targetD = Math.min(
@@ -151,7 +141,6 @@ public abstract class DayDate implements Comparable, Serializable {
         );
 
         return DayDateFactory.makeDate(targetD, baseM, targetY);
-
     }
 
     /**
