@@ -114,7 +114,7 @@ public abstract class DayDate implements Comparable, Serializable {
         public final int index;
     }
 
-    static final int[] LAST_DAY_OF_MONTH =
+    private static final int[] LAST_DAY_OF_MONTH =
             {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     static final int[] AGGREGATE_DAYS_TO_END_OF_MONTH =
