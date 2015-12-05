@@ -38,7 +38,6 @@ package org.jfree.date;
 
 import java.io.Serializable;
 import java.text.*;
-import java.util.*;
 
 /**
  *  An abstract class that represents immutable dates with a precision of
@@ -89,45 +88,6 @@ public abstract class DayDate implements Comparable, Serializable {
 
     public static final DateFormatSymbols
             DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
-
-    public static enum Day {
-        MONDAY(Calendar.MONDAY),
-        TUESDAY(Calendar.TUESDAY),
-        WEDNESDAY(Calendar.WEDNESDAY),
-        THURSDAY(Calendar.THURSDAY),
-        FRIDAY(Calendar.FRIDAY),
-        SATURDAY(Calendar.SATURDAY),
-        SUNDAY(Calendar.SUNDAY);
-
-        Day(int index) {
-            this.index = index;
-        }
-
-        public static Day make(int dayIndex) {
-            for (Day d : Day.values()) {
-                if (d.index == dayIndex)
-                    return d;
-            }
-            throw new IllegalArgumentException("Invalid day index " + dayIndex);
-        }
-
-        public final int index;
-
-        public static Day stringToWeekday(String s) {
-
-            String[] shortWeekdayNames = DATE_FORMAT_SYMBOLS.getShortWeekdays();
-            String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
-
-            s = s.trim();
-            for (Day day : values()) {
-                if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
-                        s.equalsIgnoreCase(weekDayNames[day.index])) {
-                    return day;
-                }
-            }
-            throw new IllegalArgumentException(String.format("%s is not a valid weekday string", s));
-        }
-    }
 
     private static final int[] LAST_DAY_OF_MONTH =
             {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
