@@ -120,14 +120,14 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     public DayDate addMonths(final int months) {
-        final int yy = (12 * getYYYY() + getMonth().index + months - 1)
-                       / 12;
-        final int mm = (12 * getYYYY() + getMonth().index + months - 1)
-                       % 12 + 1;
-        final int dd = Math.min(
-                getDayOfMonth(), DayDate.lastDayOfMonth(Month.make(mm), yy)
-        );
-        return DayDateFactory.makeDate(dd, mm, yy);
+        int thisMonthAsOrdinal = 12 * getYYYY() + getMonth().index - 1;
+        int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
+        int resultYear = resultMonthAsOrdinal / 12;
+        Month resultMonth = Month.make(resultMonthAsOrdinal % 12 + 1);
+
+        int lastDayOfResultMonth = lastDayOfMonth(resultMonth, resultYear);
+        int resultDay = Math.min(getDayOfMonth(), lastDayOfResultMonth);
+        return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
     }
 
     /**
