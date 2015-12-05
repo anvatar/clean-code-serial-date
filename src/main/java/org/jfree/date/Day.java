@@ -41,4 +41,8 @@ public enum Day {
         }
         throw new IllegalArgumentException(String.format("%s is not a valid weekday string", s));
     }
+
+    public String toString() {
+        return dateSymbols.getWeekdays()[index];
+    }
 }

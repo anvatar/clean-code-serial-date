@@ -164,7 +164,7 @@ public class DayDateTests extends TestCase {
      */
     public void testWeekdayCodeToString() {
 
-        final String test = DayDate.weekdayToString(Day.SATURDAY);
+        final String test = Day.SATURDAY.toString();
         assertEquals("Saturday", test);
 
     }

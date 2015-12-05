@@ -120,22 +120,6 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     /**
-     * Returns a string representing the supplied day-of-the-week.
-     * <P>
-     * Need to find a better approach.
-     *
-     * @param weekday the day of the week.
-     *
-     * @return a string representing the supplied day-of-the-week.
-     */
-    public static String weekdayToString(final Day weekday) {
-
-        final String[] weekdays = DATE_FORMAT_SYMBOLS.getWeekdays();
-        return weekdays[weekday.index];
-
-    }
-
-    /**
      * Returns an array of month names.
      *
      * @return an array of month names.
