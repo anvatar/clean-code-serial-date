@@ -192,13 +192,13 @@ public class DayDateTests extends TestCase {
      */
     public void testStringToMonth() {
 
-        Month m = DayDate.stringToMonth("January");
+        Month m = Month.parse("January");
         assertEquals(Month.JANUARY, m);
 
-        m = DayDate.stringToMonth(" January ");
+        m = Month.parse(" January ");
         assertEquals(Month.JANUARY, m);
 
-        m = DayDate.stringToMonth("Jan");
+        m = Month.parse("Jan");
         assertEquals(Month.JANUARY, m);
 
     }

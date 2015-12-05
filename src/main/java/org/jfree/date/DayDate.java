@@ -96,53 +96,6 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     /**
-     * Converts a string to a month.
-     * <P>
-     * This method will return one of the constants JANUARY, FEBRUARY, ...,
-     * DECEMBER that corresponds to the string. If the string is not
-     * recognised, this method returns -1.
-     *
-     * @param s the string to parse.
-     *
-     * @return <code>-1</code> if the string is not parseable, the month of the
-     *         year otherwise.
-     */
-    public static Month stringToMonth(String s) {
-
-        final String[] shortMonthNames = DATE_FORMAT_SYMBOLS.getShortMonths();
-        final String[] monthNames = DATE_FORMAT_SYMBOLS.getMonths();
-
-        int result = -1;
-        s = s.trim();
-
-        // first try parsing the string as an integer (1-12)...
-        try {
-            result = Integer.parseInt(s);
-        }
-        catch (NumberFormatException e) {
-            // suppress
-        }
-
-        // now search through the month names...
-        if ((result < 1) || (result > 12)) {
-            result = -1;
-            for (int i = 0; i < monthNames.length; i++) {
-                if (s.equalsIgnoreCase(shortMonthNames[i])) {
-                    result = i + 1;
-                    break;
-                }
-                if (s.equalsIgnoreCase(monthNames[i])) {
-                    result = i + 1;
-                    break;
-                }
-            }
-        }
-
-        return Month.make(result);
-
-    }
-
-    /**
      * Determines whether or not the specified year is a leap year.
      *
      * @param yyyy the year (in the range 1900 to 9999).
