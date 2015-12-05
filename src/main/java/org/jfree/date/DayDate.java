@@ -144,34 +144,19 @@ public abstract class DayDate implements Comparable, Serializable {
         }
     }
 
-    /**
-     * Converts the supplied string to a day of the week.
-     *
-     * @param s a string representing the day of the week.
-     *
-     * @return <code>-1</code> if the string is not convertable, the day of
-     *         the week otherwise.
-     */
     public static Day stringToWeekday(String s) {
 
-        final String[] shortWeekdayNames
-                = DATE_FORMAT_SYMBOLS.getShortWeekdays();
-        final String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
+        String[] shortWeekdayNames = DATE_FORMAT_SYMBOLS.getShortWeekdays();
+        String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
 
-        int result = -1;
         s = s.trim();
-        for (int i = 0; i < weekDayNames.length; i++) {
-            if (s.equalsIgnoreCase(shortWeekdayNames[i])) {
-                result = i;
-                break;
-            }
-            if (s.equalsIgnoreCase(weekDayNames[i])) {
-                result = i;
-                break;
+        for (Day day : Day.values()) {
+            if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
+                    s.equalsIgnoreCase(weekDayNames[day.index])) {
+                return day;
             }
         }
-        return Day.make(result);
-
+        throw new IllegalArgumentException(String.format("%s is not a valid weekday string", s));
     }
 
     /**
