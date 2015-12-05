@@ -126,10 +126,14 @@ public abstract class DayDate implements Comparable, Serializable {
         }
     }
 
-    public static final int INCLUDE_NONE = 0;
-    public static final int INCLUDE_FIRST = 1;
-    public static final int INCLUDE_SECOND = 2;
-    public static final int INCLUDE_BOTH = 3;
+    public enum DateInterval {
+        CLOSED(0), CLOSED_LEFT(1), CLOSED_RIGHT(2), OPEN(3);
+        public final int index;
+
+        DateInterval(int index) {
+            this.index = index;
+        }
+    }
 
     public static final int PRECEDING = -1;
     public static final int NEAREST = 0;
@@ -766,7 +770,7 @@ public abstract class DayDate implements Comparable, Serializable {
      * @return A boolean.
      */
     public abstract boolean isInRange(DayDate d1, DayDate d2,
-                                      int include);
+                                      DateInterval include);
 
     /**
      * Returns the latest date that falls on the specified day-of-the-week and
