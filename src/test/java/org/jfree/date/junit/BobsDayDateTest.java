@@ -265,17 +265,17 @@ public class BobsDayDateTest extends TestCase {
     private static SpreadsheetDate d(int day, Month month, int year) { return new SpreadsheetDate(day, month, year); }
 
     public void testAddMonths() throws Exception {
-        assertEquals(d(1, Month.FEBRUARY, 1900), addMonths(1, d(1, Month.JANUARY, 1900)));
-        assertEquals(d(28, Month.FEBRUARY, 1900), addMonths(1, d(31, Month.JANUARY, 1900)));
-        assertEquals(d(28, Month.FEBRUARY, 1900), addMonths(1, d(30, Month.JANUARY, 1900)));
-        assertEquals(d(28, Month.FEBRUARY, 1900), addMonths(1, d(29, Month.JANUARY, 1900)));
-        assertEquals(d(28, Month.FEBRUARY, 1900), addMonths(1, d(28, Month.JANUARY, 1900)));
-        assertEquals(d(27, Month.FEBRUARY, 1900), addMonths(1, d(27, Month.JANUARY, 1900)));
+        assertEquals(d(1, Month.FEBRUARY, 1900), d(1, Month.JANUARY, 1900).addMonths(1));
+        assertEquals(d(28, Month.FEBRUARY, 1900), d(31, Month.JANUARY, 1900).addMonths(1));
+        assertEquals(d(28, Month.FEBRUARY, 1900), d(30, Month.JANUARY, 1900).addMonths(1));
+        assertEquals(d(28, Month.FEBRUARY, 1900), d(29, Month.JANUARY, 1900).addMonths(1));
+        assertEquals(d(28, Month.FEBRUARY, 1900), d(28, Month.JANUARY, 1900).addMonths(1));
+        assertEquals(d(27, Month.FEBRUARY, 1900), d(27, Month.JANUARY, 1900).addMonths(1));
 
-        assertEquals(d(30, Month.JUNE, 1900), addMonths(5, d(31, Month.JANUARY, 1900)));
-        assertEquals(d(30, Month.JUNE, 1901), addMonths(17, d(31, Month.JANUARY, 1900)));
+        assertEquals(d(30, Month.JUNE, 1900), d(31, Month.JANUARY, 1900).addMonths(5));
+        assertEquals(d(30, Month.JUNE, 1901), d(31, Month.JANUARY, 1900).addMonths(17));
 
-        assertEquals(d(29, Month.FEBRUARY, 1904), addMonths(49, d(31, Month.JANUARY, 1900)));
+        assertEquals(d(29, Month.FEBRUARY, 1904), d(31, Month.JANUARY, 1900).addMonths(49));
 
     }
 
