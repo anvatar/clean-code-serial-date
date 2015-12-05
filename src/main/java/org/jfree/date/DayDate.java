@@ -104,23 +104,15 @@ public abstract class DayDate implements Comparable, Serializable {
      * leap years.
      *
      * @param month the month.
-     * @param yyyy  the year (in the range 1900 to 9999).
+     * @param year  the year (in the range 1900 to 9999).
      *
      * @return the number of the last day of the month.
      */
-    public static int lastDayOfMonth(final Month month, final int yyyy) {
-
-        final int result = month.lastDay();
-        if (month != Month.FEBRUARY) {
-            return result;
-        }
-        else if (isLeapYear(yyyy)) {
-            return result + 1;
-        }
-        else {
-            return result;
-        }
-
+    public static int lastDayOfMonth(final Month month, final int year) {
+        if (month == Month.FEBRUARY && isLeapYear(year))
+            return month.lastDay() + 1;
+        else
+            return month.lastDay();
     }
 
     /**
