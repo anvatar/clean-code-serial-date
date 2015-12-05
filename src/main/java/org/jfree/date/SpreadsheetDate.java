@@ -447,7 +447,7 @@ public class SpreadsheetDate extends DayDate {
      * @return the serial number from the day, month and year.
      */
     private int calcSerial(final int d, final Month m, final int y) {
-        final int yy = ((y - 1900) * 365) + DayDate.leapYearCount(y - 1);
+        final int yy = ((y - 1900) * 365) + leapYearCount(y - 1);
         int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m.index];
         if (m.index > Month.FEBRUARY.index) {
             if (DayDate.isLeapYear(y)) {
@@ -467,7 +467,7 @@ public class SpreadsheetDate extends DayDate {
         final int days = this.serial - EARLIEST_DATE_ORDINAL;
         // overestimated because we ignored leap days
         final int overestimatedYYYY = 1900 + (days / 365);
-        final int leaps = DayDate.leapYearCount(overestimatedYYYY);
+        final int leaps = leapYearCount(overestimatedYYYY);
         final int nonleapdays = days - leaps;
         // underestimated because we overestimated years
         int underestimatedYYYY = 1900 + (nonleapdays / 365);
@@ -506,6 +506,25 @@ public class SpreadsheetDate extends DayDate {
         // what's left is d(+1);
         this.day = this.serial - ss2
                 - daysToEndOfPrecedingMonth[this.month.index] + 1;
+
+    }
+
+    /**
+     * Returns the number of leap years from 1900 to the specified year
+     * INCLUSIVE.
+     * <P>
+     * Note that 1900 is not a leap year.
+     *
+     * @param yyyy the year (in the range 1900 to 9999).
+     *
+     * @return the number of leap years from 1900 to the specified year.
+     */
+    public static int leapYearCount(final int yyyy) {
+
+        final int leap4 = (yyyy - 1896) / 4;
+        final int leap100 = (yyyy - 1800) / 100;
+        final int leap400 = (yyyy - 1600) / 400;
+        return leap4 - leap100 + leap400;
 
     }
 
