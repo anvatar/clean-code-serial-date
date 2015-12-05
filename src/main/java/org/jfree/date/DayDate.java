@@ -57,38 +57,6 @@ import java.text.*;
  * @author David Gilbert
  */
 public abstract class DayDate implements Comparable, Serializable {
-    public static enum Month {
-        JANUARY(1),
-        FEBRUARY(2),
-        MARCH(3),
-        APRIL(4),
-        MAY(5),
-        JUNE(6),
-        JULY(7),
-        AUGUST(8),
-        SEPTEMBER(9),
-        OCTOBER(10),
-        NOVEMBER(11),
-        DECEMBER(12);
-
-        Month(int index) {
-            this.index = index;
-        }
-
-        public static Month make(int monthIndex) {
-            for (Month m : Month.values()) {
-                if (m.index == monthIndex)
-                    return m;
-            }
-            throw new IllegalArgumentException("Invalid month index " + monthIndex);
-        }
-
-        public final int index;
-
-        public int quarter() {
-            return 1 + (index - 1) / 3;
-        }
-    }
 
     public static final DateFormatSymbols
             DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
