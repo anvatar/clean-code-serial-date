@@ -385,7 +385,7 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testEndOfCurrentMonth() throws Exception {
-        DayDate d = createInstance(2);
+        DayDate d = DayDateFactory.makeDate(2);
         assertEquals(d(31, Month.JANUARY, 2006), d.getEndOfCurrentMonth(d(1, Month.JANUARY, 2006)));
         assertEquals(d(28, Month.FEBRUARY, 2006), d.getEndOfCurrentMonth(d(1, Month.FEBRUARY, 2006)));
         assertEquals(d(31, Month.MARCH, 2006), d.getEndOfCurrentMonth(d(1, Month.MARCH, 2006)));
@@ -428,7 +428,7 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testCreateInstanceFromDDMMYYY() throws Exception {
-        DayDate date = createInstance(1, Month.JANUARY, 1900);
+        DayDate date = DayDateFactory.makeDate(1, Month.JANUARY, 1900);
         assertEquals(1, date.getDayOfMonth());
         assertEquals(Month.JANUARY, date.getMonth());
         assertEquals(1900, date.getYYYY());
@@ -436,13 +436,13 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testCreateInstanceFromSerial() throws Exception {
-        assertEquals(d(1, Month.JANUARY, 1900), createInstance(2));
-        assertEquals(d(1, Month.JANUARY, 1901), createInstance(367));
+        assertEquals(d(1, Month.JANUARY, 1900), DayDateFactory.makeDate(2));
+        assertEquals(d(1, Month.JANUARY, 1901), DayDateFactory.makeDate(367));
     }
 
     public void testCreateInstanceFromJavaDate() throws Exception {
-        assertEquals(d(1, Month.JANUARY, 1900), createInstance(new GregorianCalendar(1900, 0, 1).getTime()));
-        assertEquals(d(1, Month.JANUARY, 2006), createInstance(new GregorianCalendar(2006, 0, 1).getTime()));
+        assertEquals(d(1, Month.JANUARY, 1900), DayDateFactory.makeDate(new GregorianCalendar(1900, 0, 1).getTime()));
+        assertEquals(d(1, Month.JANUARY, 2006), DayDateFactory.makeDate(new GregorianCalendar(2006, 0, 1).getTime()));
     }
 
     public static void main(String[] args) {
