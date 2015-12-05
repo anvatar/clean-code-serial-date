@@ -1,5 +1,7 @@
 package org.jfree.date;
 
+import java.text.DateFormatSymbols;
+
 public enum Month {
     JANUARY(1),
     FEBRUARY(2),
@@ -13,6 +15,8 @@ public enum Month {
     OCTOBER(10),
     NOVEMBER(11),
     DECEMBER(12);
+
+    private static DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
 
     Month(int index) {
         this.index = index;
@@ -30,5 +34,13 @@ public enum Month {
 
     public int quarter() {
         return 1 + (index - 1) / 3;
+    }
+
+    public String toString() {
+        return dateFormatSymbols.getMonths()[index - 1];
+    }
+
+    public String toShortString() {
+        return dateFormatSymbols.getShortMonths()[index - 1];
     }
 }

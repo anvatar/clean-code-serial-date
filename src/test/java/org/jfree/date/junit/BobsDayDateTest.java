@@ -88,31 +88,31 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testMonthToString() throws Exception {
-        assertEquals("January", monthToString(Month.JANUARY));
-        assertEquals("February", monthToString(Month.FEBRUARY));
-        assertEquals("March", monthToString(Month.MARCH));
-        assertEquals("April", monthToString(Month.APRIL));
-        assertEquals("May", monthToString(Month.MAY));
-        assertEquals("June", monthToString(Month.JUNE));
-        assertEquals("July", monthToString(Month.JULY));
-        assertEquals("August", monthToString(Month.AUGUST));
-        assertEquals("September", monthToString(Month.SEPTEMBER));
-        assertEquals("October", monthToString(Month.OCTOBER));
-        assertEquals("November", monthToString(Month.NOVEMBER));
-        assertEquals("December", monthToString(Month.DECEMBER));
+        assertEquals("January", Month.JANUARY.toString());
+        assertEquals("February", Month.FEBRUARY.toString());
+        assertEquals("March", Month.MARCH.toString());
+        assertEquals("April", Month.APRIL.toString());
+        assertEquals("May", Month.MAY.toString());
+        assertEquals("June", Month.JUNE.toString());
+        assertEquals("July", Month.JULY.toString());
+        assertEquals("August", Month.AUGUST.toString());
+        assertEquals("September", Month.SEPTEMBER.toString());
+        assertEquals("October", Month.OCTOBER.toString());
+        assertEquals("November", Month.NOVEMBER.toString());
+        assertEquals("December", Month.DECEMBER.toString());
 
-        assertEquals("Jan", monthToString(Month.JANUARY, true));
-        assertEquals("Feb", monthToString(Month.FEBRUARY, true));
-        assertEquals("Mar", monthToString(Month.MARCH, true));
-        assertEquals("Apr", monthToString(Month.APRIL, true));
-        assertEquals("May", monthToString(Month.MAY, true));
-        assertEquals("Jun", monthToString(Month.JUNE, true));
-        assertEquals("Jul", monthToString(Month.JULY, true));
-        assertEquals("Aug", monthToString(Month.AUGUST, true));
-        assertEquals("Sep", monthToString(Month.SEPTEMBER, true));
-        assertEquals("Oct", monthToString(Month.OCTOBER, true));
-        assertEquals("Nov", monthToString(Month.NOVEMBER, true));
-        assertEquals("Dec", monthToString(Month.DECEMBER, true));
+        assertEquals("Jan", Month.JANUARY.toShortString());
+        assertEquals("Feb", Month.FEBRUARY.toShortString());
+        assertEquals("Mar", Month.MARCH.toShortString());
+        assertEquals("Apr", Month.APRIL.toShortString());
+        assertEquals("May", Month.MAY.toShortString());
+        assertEquals("Jun", Month.JUNE.toShortString());
+        assertEquals("Jul", Month.JULY.toShortString());
+        assertEquals("Aug", Month.AUGUST.toShortString());
+        assertEquals("Sep", Month.SEPTEMBER.toShortString());
+        assertEquals("Oct", Month.OCTOBER.toShortString());
+        assertEquals("Nov", Month.NOVEMBER.toShortString());
+        assertEquals("Dec", Month.DECEMBER.toShortString());
 
     }
 
@@ -148,8 +148,8 @@ public class BobsDayDateTest extends TestCase {
         }
 
         for (Month m : Month.values()) {
-            assertEquals(m, stringToMonth(monthToString(m, false)));
-            assertEquals(m, stringToMonth(monthToString(m, true)));
+            assertEquals(m, stringToMonth(m.toShortString()));
+            assertEquals(m, stringToMonth(m.toShortString()));
         }
 
          assertEquals(Month.JANUARY, stringToMonth("jan"));

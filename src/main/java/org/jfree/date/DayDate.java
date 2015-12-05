@@ -96,51 +96,6 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     /**
-     * Returns a string representing the supplied month.
-     * <P>
-     * The string returned is the long form of the month name taken from the
-     * default locale.
-     *
-     * @param month the month.
-     *
-     * @return a string representing the supplied month.
-     */
-    public static String monthToString(final Month month) {
-
-        return monthToString(month, false);
-
-    }
-
-    /**
-     * Returns a string representing the supplied month.
-     * <P>
-     * The string returned is the long or short form of the month name taken
-     * from the default locale.
-     *
-     * @param month the month.
-     * @param shortened if <code>true</code> return the abbreviation of the
-     *                  month.
-     *
-     * @return a string representing the supplied month.
-     * @throws java.lang.IllegalArgumentException
-     */
-    public static String monthToString(final Month month,
-                                       final boolean shortened) {
-
-        final String[] months;
-
-        if (shortened) {
-            months = DATE_FORMAT_SYMBOLS.getShortMonths();
-        }
-        else {
-            months = DATE_FORMAT_SYMBOLS.getMonths();
-        }
-
-        return months[month.index - 1];
-
-    }
-
-    /**
      * Converts a string to a month.
      * <P>
      * This method will return one of the constants JANUARY, FEBRUARY, ...,
@@ -473,7 +428,7 @@ public abstract class DayDate implements Comparable, Serializable {
      * @return a string representation of the date.
      */
     public String toString() {
-        return getDayOfMonth() + "-" + DayDate.monthToString(getMonth())
+        return getDayOfMonth() + "-" + getMonth().toString()
                                + "-" + getYYYY();
     }
 

@@ -208,7 +208,7 @@ public class DayDateTests extends TestCase {
      */
     public void testMonthToStringCode() {
 
-        final String test = DayDate.monthToString(Month.DECEMBER);
+        final String test = Month.DECEMBER.toString();
         assertEquals("December", test);
 
     }
