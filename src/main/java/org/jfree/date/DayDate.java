@@ -112,6 +112,21 @@ public abstract class DayDate implements Comparable, Serializable {
         }
 
         public final int index;
+
+        public static Day stringToWeekday(String s) {
+
+            String[] shortWeekdayNames = DATE_FORMAT_SYMBOLS.getShortWeekdays();
+            String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
+
+            s = s.trim();
+            for (Day day : values()) {
+                if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
+                        s.equalsIgnoreCase(weekDayNames[day.index])) {
+                    return day;
+                }
+            }
+            throw new IllegalArgumentException(String.format("%s is not a valid weekday string", s));
+        }
     }
 
     private static final int[] LAST_DAY_OF_MONTH =
@@ -142,21 +157,6 @@ public abstract class DayDate implements Comparable, Serializable {
         WeekdayRange(int index) {
             this.index = index;
         }
-    }
-
-    public static Day stringToWeekday(String s) {
-
-        String[] shortWeekdayNames = DATE_FORMAT_SYMBOLS.getShortWeekdays();
-        String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
-
-        s = s.trim();
-        for (Day day : Day.values()) {
-            if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
-                    s.equalsIgnoreCase(weekDayNames[day.index])) {
-                return day;
-            }
-        }
-        throw new IllegalArgumentException(String.format("%s is not a valid weekday string", s));
     }
 
     /**

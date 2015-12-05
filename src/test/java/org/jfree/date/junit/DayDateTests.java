@@ -175,13 +175,13 @@ public class DayDateTests extends TestCase {
      */
     public void testStringToWeekday() {
 
-        DayDate.Day weekday = DayDate.stringToWeekday("Wednesday");
+        DayDate.Day weekday = DayDate.Day.stringToWeekday("Wednesday");
         assertEquals(DayDate.Day.WEDNESDAY, weekday);
 
-        weekday = DayDate.stringToWeekday(" Wednesday ");
+        weekday = DayDate.Day.stringToWeekday(" Wednesday ");
         assertEquals(DayDate.Day.WEDNESDAY, weekday);
 
-        weekday = DayDate.stringToWeekday("Wed");
+        weekday = DayDate.Day.stringToWeekday("Wed");
         assertEquals(DayDate.Day.WEDNESDAY, weekday);
 
     }
