@@ -392,7 +392,7 @@ public class BobsDayDateTest extends TestCase {
         DayDate date = DayDateFactory.makeDate(1, Month.JANUARY, 1900);
         assertEquals(1, date.getDayOfMonth());
         assertEquals(Month.JANUARY, date.getMonth());
-        assertEquals(1900, date.getYYYY());
+        assertEquals(1900, date.getYear());
         assertEquals(2, date.toOrdinal());
     }
 

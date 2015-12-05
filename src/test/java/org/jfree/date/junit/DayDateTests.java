@@ -307,16 +307,16 @@ public class DayDateTests extends TestCase {
         DayDate d2 = d1.addMonths(1);
         assertEquals(30, d2.getDayOfMonth());
         assertEquals(Month.JUNE, d2.getMonth());
-        assertEquals(2004, d2.getYYYY());
+        assertEquals(2004, d2.getYear());
 
         DayDate d3 = d1.addMonths(2);
         assertEquals(31, d3.getDayOfMonth());
         assertEquals(Month.JULY, d3.getMonth());
-        assertEquals(2004, d3.getYYYY());
+        assertEquals(2004, d3.getYear());
 
         DayDate d4 = d1.addMonths(1).addMonths(1);
         assertEquals(30, d4.getDayOfMonth());
         assertEquals(Month.JULY, d4.getMonth());
-        assertEquals(2004, d4.getYYYY());
+        assertEquals(2004, d4.getYear());
     }
 }
