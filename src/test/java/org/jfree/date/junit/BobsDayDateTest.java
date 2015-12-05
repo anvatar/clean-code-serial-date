@@ -72,18 +72,18 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testMonthToQuarter() throws Exception {
-        assertEquals(1, monthToQuarter(Month.JANUARY));
-        assertEquals(1, monthToQuarter(Month.FEBRUARY));
-        assertEquals(1, monthToQuarter(Month.MARCH));
-        assertEquals(2, monthToQuarter(Month.APRIL));
-        assertEquals(2, monthToQuarter(Month.MAY));
-        assertEquals(2, monthToQuarter(Month.JUNE));
-        assertEquals(3, monthToQuarter(Month.JULY));
-        assertEquals(3, monthToQuarter(Month.AUGUST));
-        assertEquals(3, monthToQuarter(Month.SEPTEMBER));
-        assertEquals(4, monthToQuarter(Month.OCTOBER));
-        assertEquals(4, monthToQuarter(Month.NOVEMBER));
-        assertEquals(4, monthToQuarter(Month.DECEMBER));
+        assertEquals(1, Month.JANUARY.quarter());
+        assertEquals(1, Month.FEBRUARY.quarter());
+        assertEquals(1, Month.MARCH.quarter());
+        assertEquals(2, Month.APRIL.quarter());
+        assertEquals(2, Month.MAY.quarter());
+        assertEquals(2, Month.JUNE.quarter());
+        assertEquals(3, Month.JULY.quarter());
+        assertEquals(3, Month.AUGUST.quarter());
+        assertEquals(3, Month.SEPTEMBER.quarter());
+        assertEquals(4, Month.OCTOBER.quarter());
+        assertEquals(4, Month.NOVEMBER.quarter());
+        assertEquals(4, Month.DECEMBER.quarter());
 
     }
 

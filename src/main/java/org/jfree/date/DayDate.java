@@ -84,6 +84,10 @@ public abstract class DayDate implements Comparable, Serializable {
         }
 
         public final int index;
+
+        public int quarter() {
+            return 1 + (index - 1) / 3;
+        }
     }
 
     public static final DateFormatSymbols
@@ -121,35 +125,6 @@ public abstract class DayDate implements Comparable, Serializable {
 
     public static String[] getMonthNames() {
         return DATE_FORMAT_SYMBOLS.getMonths();
-    }
-
-    /**
-     * Returns the quarter for the specified month.
-     *
-     * @param month the Month.
-     *
-     * @return the quarter that the month belongs to.
-     * @throws java.lang.IllegalArgumentException
-     */
-    public static int monthToQuarter(final Month month) {
-
-        switch(month) {
-            case JANUARY:
-            case FEBRUARY:
-            case MARCH: return 1;
-            case APRIL:
-            case MAY:
-            case JUNE: return 2;
-            case JULY:
-            case AUGUST:
-            case SEPTEMBER: return 3;
-            case OCTOBER:
-            case NOVEMBER:
-            case DECEMBER: return 4;
-            default: throw new IllegalArgumentException(
-                    "DayDate.monthToQuarter: invalid month.");
-        }
-
     }
 
     /**
