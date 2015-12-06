@@ -149,18 +149,10 @@ public abstract class DayDate implements Comparable, Serializable {
      */
     public static DayDate getPreviousDayOfWeek(final Day targetWeekday,
                                                final DayDate base) {
-
-        final int adjust;
-        final int baseDOW = base.getDayOfWeek().index;
-        if (baseDOW > targetWeekday.index) {
-            adjust = Math.min(0, targetWeekday.index - baseDOW);
-        }
-        else {
-            adjust = -7 + Math.max(0, targetWeekday.index - baseDOW);
-        }
-
-        return base.plusDays(adjust);
-
+        int offsetToTarget = targetWeekday.index - base.getDayOfWeek().index;
+        if (offsetToTarget >= 0)
+            offsetToTarget -= 7;
+        return base.plusDays(offsetToTarget);
     }
 
     /**
