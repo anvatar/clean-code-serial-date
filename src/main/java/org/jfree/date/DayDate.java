@@ -151,7 +151,7 @@ public abstract class DayDate implements Comparable, Serializable {
                                                final DayDate base) {
 
         final int adjust;
-        final int baseDOW = base.getDayOfWeek();
+        final int baseDOW = base.getDayOfWeek().index;
         if (baseDOW > targetWeekday.index) {
             adjust = Math.min(0, targetWeekday.index - baseDOW);
         }
@@ -177,7 +177,7 @@ public abstract class DayDate implements Comparable, Serializable {
                                                 final DayDate base) {
 
         final int adjust;
-        final int baseDOW = base.getDayOfWeek();
+        final int baseDOW = base.getDayOfWeek().index;
         if (baseDOW >= targetWeekday.index) {
             adjust = 7 + Math.min(0, targetWeekday.index - baseDOW);
         }
@@ -201,7 +201,7 @@ public abstract class DayDate implements Comparable, Serializable {
     public static DayDate getNearestDayOfWeek(final Day targetDOW,
                                               final DayDate base) {
 
-        int delta = targetDOW.index - base.getDayOfWeek();
+        int delta = targetDOW.index - base.getDayOfWeek().index;
         int positiveDelta = delta + 7;
         int adjust = positiveDelta % 7;
         if (adjust > 3)
@@ -320,7 +320,7 @@ public abstract class DayDate implements Comparable, Serializable {
      *
      * @return the day of the week.
      */
-    public abstract int getDayOfWeek();
+    public abstract Day getDayOfWeek();
 
     /**
      * Returns the difference (in days) between this date and the specified
