@@ -250,7 +250,13 @@ public class SpreadsheetDate extends DayDate {
      * @return A code representing the day of the week.
      */
     public Day getDayOfWeek() {
-        return Day.make((this.serial + 6) % 7 + 1);
+        Day startingDay = getDayOfWeekForOrdinalZero();
+        int startingOffset = startingDay.index - Day.SUNDAY.index;
+        return Day.make((getOrdinalDay() + startingOffset) % 7 + 1);
+    }
+
+    private Day getDayOfWeekForOrdinalZero() {
+        return Day.SATURDAY;
     }
 
     /**
