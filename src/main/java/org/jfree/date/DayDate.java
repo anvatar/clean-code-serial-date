@@ -72,7 +72,7 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     public enum DateInterval {
-        CLOSED(0) {
+        OPEN(0) {
             public boolean isIn(int d, int left, int right) {
                 return d > left && d < right;
             }
@@ -87,7 +87,7 @@ public abstract class DayDate implements Comparable, Serializable {
                 return d > left && d <= right;
             }
         },
-        OPEN(3) {
+        CLOSED(3) {
             public boolean isIn(int d, int left, int right) {
                 return d >= left && d <= right;
             }
@@ -336,7 +336,7 @@ public abstract class DayDate implements Comparable, Serializable {
      * @return A boolean.
      */
     public boolean isInRange(final DayDate d1, final DayDate d2) {
-        return isInRange(d1, d2, DateInterval.OPEN);
+        return isInRange(d1, d2, DateInterval.CLOSED);
     }
 
     /**
