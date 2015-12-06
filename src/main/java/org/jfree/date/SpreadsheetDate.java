@@ -118,7 +118,7 @@ public class SpreadsheetDate extends DayDate {
      * @param year  the year (in the range 1900 to 9999).
      */
     public SpreadsheetDate(final int day, final int month, final int year) {
-        this(day, Month.make(month), year);
+        this(day, Month.fromInt(month), year);
     }
 
     public SpreadsheetDate(final int day, final Month month, final int year) {
@@ -132,8 +132,8 @@ public class SpreadsheetDate extends DayDate {
             );
         }
 
-        if ((month.index >= Month.JANUARY.index)
-                && (month.index <= Month.DECEMBER.index)) {
+        if ((month.toInt() >= Month.JANUARY.toInt())
+                && (month.toInt() <= Month.DECEMBER.toInt())) {
             this.month = month;
         }
         else {
@@ -297,8 +297,8 @@ public class SpreadsheetDate extends DayDate {
      */
     private int calcSerial(final int d, final Month m, final int y) {
         final int yy = ((y - 1900) * 365) + leapYearCount(y - 1);
-        int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m.index];
-        if (m.index > Month.FEBRUARY.index) {
+        int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m.toInt()];
+        if (m.toInt() > Month.FEBRUARY.toInt()) {
             if (DateUtil.isLeapYear(y)) {
                 mm = mm + 1;
             }
@@ -325,15 +325,15 @@ public class SpreadsheetDate extends DayDate {
             this.year = underestimatedYYYY;
         }
         else {
-            int ss1 = calcSerial(1, Month.make(1), underestimatedYYYY);
+            int ss1 = calcSerial(1, Month.fromInt(1), underestimatedYYYY);
             while (ss1 <= getOrdinalDay()) {
                 underestimatedYYYY = underestimatedYYYY + 1;
-                ss1 = calcSerial(1, Month.make(1), underestimatedYYYY);
+                ss1 = calcSerial(1, Month.fromInt(1), underestimatedYYYY);
             }
             this.year = underestimatedYYYY - 1;
         }
 
-        final int ss2 = calcSerial(1, Month.make(1), this.year);
+        final int ss2 = calcSerial(1, Month.fromInt(1), this.year);
 
         int[] daysToEndOfPrecedingMonth
                 = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
@@ -350,11 +350,11 @@ public class SpreadsheetDate extends DayDate {
             mm = mm + 1;
             sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
         }
-        this.month = Month.make(mm - 1);
+        this.month = Month.fromInt(mm - 1);
 
         // what's left is d(+1);
         this.day = getOrdinalDay() - ss2
-                - daysToEndOfPrecedingMonth[this.month.index] + 1;
+                - daysToEndOfPrecedingMonth[this.month.toInt()] + 1;
 
     }
 

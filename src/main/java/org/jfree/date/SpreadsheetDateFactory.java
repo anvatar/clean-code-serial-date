@@ -20,7 +20,7 @@ public class SpreadsheetDateFactory extends DayDateFactory {
         calendar.setTime(date);
         return new SpreadsheetDate(
                 calendar.get(Calendar.DATE),
-                Month.make(calendar.get(Calendar.MONTH) + 1),
+                Month.fromInt(calendar.get(Calendar.MONTH) + 1),
                 calendar.get(Calendar.YEAR)
         );
     }
