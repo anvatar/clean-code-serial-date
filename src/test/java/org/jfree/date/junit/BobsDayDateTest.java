@@ -374,12 +374,6 @@ public class BobsDayDateTest extends TestCase {
         assertEquals(d(29, Month.FEBRUARY, 2008), d(1, Month.FEBRUARY, 2008).getEndOfCurrentMonth());
     }
 
-    public void testRelativeToString() throws Exception {
-        assertEquals("Preceding", relativeToString(WeekdayRange.LAST));
-        assertEquals("Nearest", relativeToString(WeekdayRange.NEAREST));
-        assertEquals("Following", relativeToString(WeekdayRange.NEXT));
-    }
-
     public void testCreateInstanceFromDDMMYYY() throws Exception {
         DayDate date = DayDateFactory.makeDate(1, Month.JANUARY, 1900);
         assertEquals(1, date.getDayOfMonth());
