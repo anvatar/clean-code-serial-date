@@ -54,9 +54,6 @@
 
 package org.jfree.date;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * Represents a date using an integer, in a similar fashion to the
  * implementation in Microsoft Excel. The range of dates supported is
@@ -285,7 +282,7 @@ public class SpreadsheetDate extends DayDate {
      *         'other' date.
      */
     public int compare(final DayDate other) {
-        return this.serial - other.getOrdinalDay();
+        return getOrdinalDay() - other.getOrdinalDay();
     }
 
     /**
@@ -310,7 +307,7 @@ public class SpreadsheetDate extends DayDate {
      *         the specified DayDate.
      */
     public boolean isOn(final DayDate other) {
-        return (this.serial == other.getOrdinalDay());
+        return (getOrdinalDay() == other.getOrdinalDay());
     }
 
     /**
@@ -323,7 +320,7 @@ public class SpreadsheetDate extends DayDate {
      *         compared to the specified DayDate.
      */
     public boolean isBefore(final DayDate other) {
-        return (this.serial < other.getOrdinalDay());
+        return (getOrdinalDay() < other.getOrdinalDay());
     }
 
     /**
@@ -336,7 +333,7 @@ public class SpreadsheetDate extends DayDate {
      *         as the specified DayDate.
      */
     public boolean isOnOrBefore(final DayDate other) {
-        return (this.serial <= other.getOrdinalDay());
+        return (getOrdinalDay() <= other.getOrdinalDay());
     }
 
     /**
@@ -349,7 +346,7 @@ public class SpreadsheetDate extends DayDate {
      *         as the specified DayDate.
      */
     public boolean isAfter(final DayDate other) {
-        return (this.serial > other.getOrdinalDay());
+        return (getOrdinalDay() > other.getOrdinalDay());
     }
 
     /**
@@ -362,7 +359,7 @@ public class SpreadsheetDate extends DayDate {
      *         the specified DayDate.
      */
     public boolean isOnOrAfter(final DayDate other) {
-        return (this.serial >= other.getOrdinalDay());
+        return (getOrdinalDay() >= other.getOrdinalDay());
     }
 
     /**
@@ -443,7 +440,7 @@ public class SpreadsheetDate extends DayDate {
     private void calcDayMonthYear() {
 
         // get the year from the serial date
-        final int days = this.serial - EARLIEST_DATE_ORDINAL;
+        final int days = getOrdinalDay() - EARLIEST_DATE_ORDINAL;
         // overestimated because we ignored leap days
         final int overestimatedYYYY = 1900 + (days / 365);
         final int leaps = leapYearCount(overestimatedYYYY);
@@ -456,7 +453,7 @@ public class SpreadsheetDate extends DayDate {
         }
         else {
             int ss1 = calcSerial(1, Month.make(1), underestimatedYYYY);
-            while (ss1 <= this.serial) {
+            while (ss1 <= getOrdinalDay()) {
                 underestimatedYYYY = underestimatedYYYY + 1;
                 ss1 = calcSerial(1, Month.make(1), underestimatedYYYY);
             }
@@ -476,14 +473,14 @@ public class SpreadsheetDate extends DayDate {
         // get the month from the serial date
         int mm = 1;
         int sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
-        while (sss < this.serial) {
+        while (sss < getOrdinalDay()) {
             mm = mm + 1;
             sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
         }
         this.month = Month.make(mm - 1);
 
         // what's left is d(+1);
-        this.day = this.serial - ss2
+        this.day = getOrdinalDay() - ss2
                 - daysToEndOfPrecedingMonth[this.month.index] + 1;
 
     }
