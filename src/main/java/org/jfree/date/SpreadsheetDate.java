@@ -142,7 +142,7 @@ public class SpreadsheetDate extends DayDate {
             );
         }
 
-        if ((day >= 1) && (day <= DayDate.lastDayOfMonth(month, year))) {
+        if ((day >= 1) && (day <= DateUtil.lastDayOfMonth(month, year))) {
             this.day = day;
         }
         else {
@@ -299,7 +299,7 @@ public class SpreadsheetDate extends DayDate {
         final int yy = ((y - 1900) * 365) + leapYearCount(y - 1);
         int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m.index];
         if (m.index > Month.FEBRUARY.index) {
-            if (DayDate.isLeapYear(y)) {
+            if (DateUtil.isLeapYear(y)) {
                 mm = mm + 1;
             }
         }
@@ -338,7 +338,7 @@ public class SpreadsheetDate extends DayDate {
         int[] daysToEndOfPrecedingMonth
                 = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
 
-        if (isLeapYear(this.year)) {
+        if (DateUtil.isLeapYear(this.year)) {
             daysToEndOfPrecedingMonth
                     = LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
         }

@@ -1,6 +1,5 @@
 package org.jfree.date;
 
-import java.text.DateFormatSymbols;
 import java.util.Calendar;
 
 public enum Day {
@@ -13,8 +12,6 @@ public enum Day {
     SUNDAY(Calendar.SUNDAY);
 
     public final int index;
-
-    private static DateFormatSymbols dateSymbols = new DateFormatSymbols();
 
     Day(int index) {
         this.index = index;
@@ -29,8 +26,8 @@ public enum Day {
     }
 
     public static Day stringToWeekday(String s) {
-        String[] shortWeekdayNames = dateSymbols.getShortWeekdays();
-        String[] weekDayNames = dateSymbols.getWeekdays();
+        String[] shortWeekdayNames = DateUtil.dateFormatSymbols.getShortWeekdays();
+        String[] weekDayNames = DateUtil.dateFormatSymbols.getWeekdays();
 
         s = s.trim();
         for (Day day : values()) {
@@ -43,6 +40,6 @@ public enum Day {
     }
 
     public String toString() {
-        return dateSymbols.getWeekdays()[index];
+        return DateUtil.dateFormatSymbols.getWeekdays()[index];
     }
 }
