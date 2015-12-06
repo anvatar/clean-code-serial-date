@@ -216,42 +216,17 @@ public abstract class DayDate implements Comparable, Serializable {
         return calendar.getTime();
     }
 
-    /**
-     * Converts the date to a string.
-     *
-     * @return a string representation of the date.
-     */
     public String toString() {
         return getDayOfMonth() + "-" + getMonth().toString()
                                + "-" + getYear();
     }
 
-    /**
-     * Returns the year (assume a valid range of 1900 to 9999).
-     *
-     * @return the year.
-     */
     public abstract int getYear();
 
-    /**
-     * Returns the month (January = 1, February = 2, March = 3).
-     *
-     * @return the month of the year.
-     */
     public abstract Month getMonth();
 
-    /**
-     * Returns the day of the month.
-     *
-     * @return the day of the month.
-     */
     public abstract int getDayOfMonth();
 
-    /**
-     * Returns the day of the week.
-     *
-     * @return the day of the week.
-     */
     public abstract Day getDayOfWeek();
 
     /**
