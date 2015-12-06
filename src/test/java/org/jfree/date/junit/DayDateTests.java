@@ -169,13 +169,13 @@ public class DayDateTests extends TestCase {
      */
     public void testStringToWeekday() {
 
-        Day weekday = Day.stringToWeekday("Wednesday");
+        Day weekday = Day.parse("Wednesday");
         assertEquals(Day.WEDNESDAY, weekday);
 
-        weekday = Day.stringToWeekday(" Wednesday ");
+        weekday = Day.parse(" Wednesday ");
         assertEquals(Day.WEDNESDAY, weekday);
 
-        weekday = Day.stringToWeekday("Wed");
+        weekday = Day.parse("Wed");
         assertEquals(Day.WEDNESDAY, weekday);
 
     }

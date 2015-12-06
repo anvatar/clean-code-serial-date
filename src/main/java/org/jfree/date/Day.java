@@ -11,13 +11,13 @@ public enum Day {
     SATURDAY(Calendar.SATURDAY),
     SUNDAY(Calendar.SUNDAY);
 
-    public final int index;
+    private final int index;
 
-    Day(int index) {
-        this.index = index;
+    Day(int day) {
+        index = day;
     }
 
-    public static Day make(int dayIndex) {
+    public static Day fromInt(int dayIndex) {
         for (Day d : Day.values()) {
             if (d.index == dayIndex)
                 return d;
@@ -25,7 +25,7 @@ public enum Day {
         throw new IllegalArgumentException("Invalid day index " + dayIndex);
     }
 
-    public static Day stringToWeekday(String s) {
+    public static Day parse(String s) {
         String[] shortWeekdayNames = DateUtil.dateFormatSymbols.getShortWeekdays();
         String[] weekDayNames = DateUtil.dateFormatSymbols.getWeekdays();
 
@@ -41,5 +41,9 @@ public enum Day {
 
     public String toString() {
         return DateUtil.dateFormatSymbols.getWeekdays()[index];
+    }
+
+    public int toInt() {
+        return index;
     }
 }

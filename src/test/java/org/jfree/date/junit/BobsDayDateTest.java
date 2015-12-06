@@ -10,54 +10,54 @@ public class BobsDayDateTest extends TestCase {
     public void testStringToWeekdayCode() throws Exception {
 
         try {
-            Day.stringToWeekday("Hello");
+            Day.parse("Hello");
             fail("Invalid day index string should throw exception");
         } catch (Exception ignore) {
         }
 
-        assertEquals(Day.MONDAY, Day.stringToWeekday("Monday"));
-        assertEquals(Day.MONDAY, Day.stringToWeekday("Mon"));
-        assertEquals(Day.MONDAY, Day.stringToWeekday("monday"));
-        assertEquals(Day.MONDAY, Day.stringToWeekday("MONDAY"));
-        assertEquals(Day.MONDAY, Day.stringToWeekday("mon"));
+        assertEquals(Day.MONDAY, Day.parse("Monday"));
+        assertEquals(Day.MONDAY, Day.parse("Mon"));
+        assertEquals(Day.MONDAY, Day.parse("monday"));
+        assertEquals(Day.MONDAY, Day.parse("MONDAY"));
+        assertEquals(Day.MONDAY, Day.parse("mon"));
 
-        assertEquals(Day.TUESDAY, Day.stringToWeekday("Tuesday"));
-        assertEquals(Day.TUESDAY, Day.stringToWeekday("Tue"));
-        assertEquals(Day.TUESDAY, Day.stringToWeekday("tuesday"));
-        assertEquals(Day.TUESDAY, Day.stringToWeekday("TUESDAY"));
-        assertEquals(Day.TUESDAY, Day.stringToWeekday("tue"));
-        // assertEquals(Day.TUESDAY, stringToWeekday("tues"));
+        assertEquals(Day.TUESDAY, Day.parse("Tuesday"));
+        assertEquals(Day.TUESDAY, Day.parse("Tue"));
+        assertEquals(Day.TUESDAY, Day.parse("tuesday"));
+        assertEquals(Day.TUESDAY, Day.parse("TUESDAY"));
+        assertEquals(Day.TUESDAY, Day.parse("tue"));
+        // assertEquals(Day.TUESDAY, parse("tues"));
 
-        assertEquals(Day.WEDNESDAY, Day.stringToWeekday("Wednesday"));
-        assertEquals(Day.WEDNESDAY, Day.stringToWeekday("Wed"));
-        assertEquals(Day.WEDNESDAY, Day.stringToWeekday("wednesday"));
-        assertEquals(Day.WEDNESDAY, Day.stringToWeekday("WEDNESDAY"));
-        assertEquals(Day.WEDNESDAY, Day.stringToWeekday("wed"));
+        assertEquals(Day.WEDNESDAY, Day.parse("Wednesday"));
+        assertEquals(Day.WEDNESDAY, Day.parse("Wed"));
+        assertEquals(Day.WEDNESDAY, Day.parse("wednesday"));
+        assertEquals(Day.WEDNESDAY, Day.parse("WEDNESDAY"));
+        assertEquals(Day.WEDNESDAY, Day.parse("wed"));
 
-        assertEquals(Day.THURSDAY, Day.stringToWeekday("Thursday"));
-        assertEquals(Day.THURSDAY, Day.stringToWeekday("Thu"));
-        assertEquals(Day.THURSDAY, Day.stringToWeekday("thursday"));
-        assertEquals(Day.THURSDAY, Day.stringToWeekday("THURSDAY"));
-        assertEquals(Day.THURSDAY, Day.stringToWeekday("thu"));
-        // assertEquals(Day.THURSDAY, stringToWeekday("thurs"));
+        assertEquals(Day.THURSDAY, Day.parse("Thursday"));
+        assertEquals(Day.THURSDAY, Day.parse("Thu"));
+        assertEquals(Day.THURSDAY, Day.parse("thursday"));
+        assertEquals(Day.THURSDAY, Day.parse("THURSDAY"));
+        assertEquals(Day.THURSDAY, Day.parse("thu"));
+        // assertEquals(Day.THURSDAY, parse("thurs"));
 
-        assertEquals(Day.FRIDAY, Day.stringToWeekday("Friday"));
-        assertEquals(Day.FRIDAY, Day.stringToWeekday("Fri"));
-        assertEquals(Day.FRIDAY, Day.stringToWeekday("friday"));
-        assertEquals(Day.FRIDAY, Day.stringToWeekday("FRIDAY"));
-        assertEquals(Day.FRIDAY, Day.stringToWeekday("fri"));
+        assertEquals(Day.FRIDAY, Day.parse("Friday"));
+        assertEquals(Day.FRIDAY, Day.parse("Fri"));
+        assertEquals(Day.FRIDAY, Day.parse("friday"));
+        assertEquals(Day.FRIDAY, Day.parse("FRIDAY"));
+        assertEquals(Day.FRIDAY, Day.parse("fri"));
 
-        assertEquals(Day.SATURDAY, Day.stringToWeekday("Saturday"));
-        assertEquals(Day.SATURDAY, Day.stringToWeekday("Sat"));
-        assertEquals(Day.SATURDAY, Day.stringToWeekday("saturday"));
-        assertEquals(Day.SATURDAY, Day.stringToWeekday("SATURDAY"));
-        assertEquals(Day.SATURDAY, Day.stringToWeekday("sat"));
+        assertEquals(Day.SATURDAY, Day.parse("Saturday"));
+        assertEquals(Day.SATURDAY, Day.parse("Sat"));
+        assertEquals(Day.SATURDAY, Day.parse("saturday"));
+        assertEquals(Day.SATURDAY, Day.parse("SATURDAY"));
+        assertEquals(Day.SATURDAY, Day.parse("sat"));
 
-        assertEquals(Day.SUNDAY, Day.stringToWeekday("Sunday"));
-        assertEquals(Day.SUNDAY, Day.stringToWeekday("Sun"));
-        assertEquals(Day.SUNDAY, Day.stringToWeekday("sunday"));
-        assertEquals(Day.SUNDAY, Day.stringToWeekday("SUNDAY"));
-        assertEquals(Day.SUNDAY, Day.stringToWeekday("sun"));
+        assertEquals(Day.SUNDAY, Day.parse("Sunday"));
+        assertEquals(Day.SUNDAY, Day.parse("Sun"));
+        assertEquals(Day.SUNDAY, Day.parse("sunday"));
+        assertEquals(Day.SUNDAY, Day.parse("SUNDAY"));
+        assertEquals(Day.SUNDAY, Day.parse("sun"));
     }
 
     public void testWeekdayCodeToString() throws Exception {
