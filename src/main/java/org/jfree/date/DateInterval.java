@@ -1,31 +1,26 @@
 package org.jfree.date;
 
 public enum DateInterval {
-    OPEN(0) {
+    OPEN {
         public boolean isIn(int d, int left, int right) {
             return d > left && d < right;
         }
     },
-    CLOSED_LEFT(1) {
+    CLOSED_LEFT {
         public boolean isIn(int d, int left, int right) {
             return d >= left && d < right;
         }
     },
-    CLOSED_RIGHT(2) {
+    CLOSED_RIGHT {
         public boolean isIn(int d, int left, int right) {
             return d > left && d <= right;
         }
     },
-    CLOSED(3) {
+    CLOSED {
         public boolean isIn(int d, int left, int right) {
             return d >= left && d <= right;
         }
     };
-    public final int index;
-
-    DateInterval(int index) {
-        this.index = index;
-    }
 
     public abstract boolean isIn(int d, int left, int right);
 }
