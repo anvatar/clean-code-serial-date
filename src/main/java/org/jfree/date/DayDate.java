@@ -68,18 +68,6 @@ public abstract class DayDate implements Comparable, Serializable {
         WeekInMonth(int index) {
             this.index = index;
         }
-
-        public String toString() {
-            switch (this) {
-                case FIRST: return "First";
-                case SECOND: return "Second";
-                case THIRD: return "Third";
-                case FOURTH: return "Fourth";
-                case LAST: return "Last";
-                default:
-                    throw new IllegalArgumentException("DayDate.weekInMonthToString(): invalid code.");
-            }
-        }
     }
 
     public enum DateInterval {
