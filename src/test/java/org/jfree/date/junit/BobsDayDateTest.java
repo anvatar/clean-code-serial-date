@@ -294,9 +294,9 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testGetFollowingDayOfWeek() throws Exception {
-        assertEquals(d(1, Month.JANUARY, 2005),getFollowingDayOfWeek(Day.SATURDAY, d(25, Month.DECEMBER, 2004)));
-        assertEquals(d(1, Month.JANUARY, 2005), getFollowingDayOfWeek(Day.SATURDAY, d(26, Month.DECEMBER, 2004)));
-        assertEquals(d(3, Month.MARCH, 2004), getFollowingDayOfWeek(Day.WEDNESDAY, d(28, Month.FEBRUARY, 2004)));
+        assertEquals(d(1, Month.JANUARY, 2005), d(25, Month.DECEMBER, 2004).getFollowingDayOfWeek(Day.SATURDAY));
+        assertEquals(d(1, Month.JANUARY, 2005), d(26, Month.DECEMBER, 2004).getFollowingDayOfWeek(Day.SATURDAY));
+        assertEquals(d(3, Month.MARCH, 2004), d(28, Month.FEBRUARY, 2004).getFollowingDayOfWeek(Day.WEDNESDAY));
     }
 
     public void testGetNearestDayOfWeek() throws Exception {
