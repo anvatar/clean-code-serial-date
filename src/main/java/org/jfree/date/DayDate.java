@@ -63,10 +63,10 @@ public abstract class DayDate implements Comparable, Serializable {
     }
 
     public DayDate plusMonths(int months) {
-        int thisMonthAsOrdinal = 12 * getYear() + getMonth().toInt() - 1;
+        int thisMonthAsOrdinal = 12 * getYear() + getMonth().toInt() - Month.JANUARY.toInt();
         int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
         int resultYear = resultMonthAsOrdinal / 12;
-        Month resultMonth = Month.fromInt(resultMonthAsOrdinal % 12 + 1);
+        Month resultMonth = Month.fromInt(resultMonthAsOrdinal % 12 + Month.JANUARY.toInt());
         int resultDay = correctLastDayOfMonth(getDayOfMonth(), resultMonth, resultYear);
         return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
     }
@@ -156,7 +156,7 @@ public abstract class DayDate implements Comparable, Serializable {
 
     public Date toDate() {
         final Calendar calendar = Calendar.getInstance();
-        calendar.set(getYear(), getMonth().toInt() - 1, getDayOfMonth(), 0, 0, 0);
+        calendar.set(getYear(), getMonth().toInt() - Month.JANUARY.toInt(), getDayOfMonth(), 0, 0, 0);
         return calendar.getTime();
     }
 
@@ -174,7 +174,7 @@ public abstract class DayDate implements Comparable, Serializable {
     public Day getDayOfWeek() {
         Day startingDay = getDayOfWeekForOrdinalZero();
         int startingOffset = startingDay.toInt() - Day.SUNDAY.toInt();
-        return Day.fromInt((getOrdinalDay() + startingOffset) % 7 + 1);
+        return Day.fromInt((getOrdinalDay() + startingOffset) % 7 + Day.SUNDAY.toInt());
     }
 
     protected abstract Day getDayOfWeekForOrdinalZero();
