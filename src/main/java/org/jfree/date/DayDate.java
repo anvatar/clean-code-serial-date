@@ -62,54 +62,6 @@ public abstract class DayDate implements Comparable, Serializable {
     public static final DateFormatSymbols
             DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
 
-    public enum WeekInMonth {
-        FIRST(1), SECOND(2), THIRD(3), FOURTH(4), LAST(0);
-        public final int index;
-
-        WeekInMonth(int index) {
-            this.index = index;
-        }
-    }
-
-    public enum DateInterval {
-        OPEN(0) {
-            public boolean isIn(int d, int left, int right) {
-                return d > left && d < right;
-            }
-        },
-        CLOSED_LEFT(1) {
-            public boolean isIn(int d, int left, int right) {
-                return d >= left && d < right;
-            }
-        },
-        CLOSED_RIGHT(2) {
-            public boolean isIn(int d, int left, int right) {
-                return d > left && d <= right;
-            }
-        },
-        CLOSED(3) {
-            public boolean isIn(int d, int left, int right) {
-                return d >= left && d <= right;
-            }
-        };
-        public final int index;
-
-        DateInterval(int index) {
-            this.index = index;
-        }
-
-        public abstract boolean isIn(int d, int left, int right);
-    }
-
-    public enum WeekdayRange {
-        LAST(-1), NEAREST(0), NEXT(1);
-        public final int index;
-
-        WeekdayRange(int index) {
-            this.index = index;
-        }
-    }
-
     public static String[] getMonthNames() {
         return DATE_FORMAT_SYMBOLS.getMonths();
     }
