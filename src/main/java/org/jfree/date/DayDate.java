@@ -173,22 +173,19 @@ public abstract class DayDate implements Comparable, Serializable {
      * Returns the date that falls on the specified day-of-the-week and is
      * CLOSEST to the base date.
      *
-     * @param targetDOW a code for the target day-of-the-week.
-     * @param base      the base date.
+     * @param targetDayOfWeek a code for the target day-of-the-week.
      *
      * @return the date that falls on the specified day-of-the-week and is
      *         CLOSEST to the base date.
      */
-    public static DayDate getNearestDayOfWeek(final Day targetDOW,
-                                              final DayDate base) {
-
-        int delta = targetDOW.index - base.getDayOfWeek().index;
-        int positiveDelta = delta + 7;
-        int adjust = positiveDelta % 7;
-        if (adjust > 3)
-            adjust -= 7;
-        return base.plusDays(adjust);
-
+    public DayDate getNearestDayOfWeek(Day targetDayOfWeek) {
+        int offsetToThisWeeksTarget = targetDayOfWeek.index - getDayOfWeek().index;
+        int offsetToFutureTarget = (offsetToThisWeeksTarget + 7) % 7;
+        int offsetToPreviousTarget = offsetToFutureTarget - 7;
+        if (offsetToFutureTarget > 3)
+            return plusDays(offsetToPreviousTarget);
+        else
+            return plusDays(offsetToFutureTarget);
     }
 
     /**
@@ -397,16 +394,5 @@ public abstract class DayDate implements Comparable, Serializable {
      */
     public abstract boolean isInRange(DayDate d1, DayDate d2,
                                       DateInterval include);
-
-    /**
-     * Returns the nearest date that falls on the specified day-of-the-week.
-     *
-     * @param targetDOW a code for the target day-of-the-week.
-     *
-     * @return the nearest date that falls on the specified day-of-the-week.
-     */
-    public DayDate getNearestDayOfWeek(final Day targetDOW) {
-        return getNearestDayOfWeek(targetDOW, this);
-    }
 
 }
