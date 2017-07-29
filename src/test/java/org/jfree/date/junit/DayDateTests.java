@@ -89,7 +89,7 @@ public class DayDateTests extends TestCase {
      * Problem set up.
      */
     protected void setUp() {
-        this.nov9Y2001 = DayDateFactory.makeDate(9, Month.NOVEMBER, 2001);
+        this.nov9Y2001 = DayDateBuilder.makeDate(9, Month.NOVEMBER, 2001);
     }
 
     /**
@@ -97,7 +97,7 @@ public class DayDateTests extends TestCase {
      */
     public void testAddMonthsTo9Nov2001() {
         final DayDate jan9Y2002 = this.nov9Y2001.plusMonths(2);
-        final DayDate answer = DayDateFactory.makeDate(9, 1, 2002);
+        final DayDate answer = DayDateBuilder.makeDate(9, 1, 2002);
         assertEquals(answer, jan9Y2002);
     }
 
@@ -105,16 +105,16 @@ public class DayDateTests extends TestCase {
      * A test case for a reported bug, now fixed.
      */
     public void testAddMonthsTo5Oct2003() {
-        final DayDate d1 = DayDateFactory.makeDate(5, Month.OCTOBER, 2003);
+        final DayDate d1 = DayDateBuilder.makeDate(5, Month.OCTOBER, 2003);
         final DayDate d2 = d1.plusMonths(2);
-        assertEquals(d2, DayDateFactory.makeDate(5, Month.DECEMBER, 2003));
+        assertEquals(d2, DayDateBuilder.makeDate(5, Month.DECEMBER, 2003));
     }
 
     /**
      * A test case for a reported bug, now fixed.
      */
     public void testAddMonthsTo1Jan2003() {
-        final DayDate d1 = DayDateFactory.makeDate(1, Month.JANUARY, 2003);
+        final DayDate d1 = DayDateBuilder.makeDate(1, Month.JANUARY, 2003);
         final DayDate d2 = d1.plusMonths(0);
         assertEquals(d2, d1);
     }
@@ -147,7 +147,7 @@ public class DayDateTests extends TestCase {
      * The Monday nearest to 22nd January 1970 falls on the 19th.
      */
     public void testMondayNearest22Jan1970() {
-        DayDate jan22Y1970 = DayDateFactory.makeDate(22, Month.JANUARY, 1970);
+        DayDate jan22Y1970 = DayDateBuilder.makeDate(22, Month.JANUARY, 1970);
         DayDate mondayNearest = jan22Y1970.getNearestDayOfWeek(Day.MONDAY);
         assertEquals(19, mondayNearest.getDayOfMonth());
     }
@@ -261,7 +261,7 @@ public class DayDateTests extends TestCase {
      */
     public void testSerialization() {
 
-        DayDate d1 = DayDateFactory.makeDate(15, 4, 2000);
+        DayDate d1 = DayDateBuilder.makeDate(15, 4, 2000);
         DayDate d2 = null;
 
         try {
@@ -286,9 +286,9 @@ public class DayDateTests extends TestCase {
      * A test for bug report 1096282 (now fixed).
      */
     public void test1096282() {
-        DayDate d = DayDateFactory.makeDate(29, 2, 2004);
+        DayDate d = DayDateBuilder.makeDate(29, 2, 2004);
         d = d.plusYears(1);
-        DayDate expected = DayDateFactory.makeDate(28, 2, 2005);
+        DayDate expected = DayDateBuilder.makeDate(28, 2, 2005);
         assertTrue(d.isOn(expected));
     }
 
@@ -296,7 +296,7 @@ public class DayDateTests extends TestCase {
      * Miscellaneous tests for the plusMonths() method.
      */
     public void testAddMonths() {
-        DayDate d1 = DayDateFactory.makeDate(31, 5, 2004);
+        DayDate d1 = DayDateBuilder.makeDate(31, 5, 2004);
 
         DayDate d2 = d1.plusMonths(1);
         assertEquals(30, d2.getDayOfMonth());

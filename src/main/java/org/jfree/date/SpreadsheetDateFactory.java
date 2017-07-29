@@ -1,21 +1,23 @@
 package org.jfree.date;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class SpreadsheetDateFactory extends DayDateFactory {
-    protected DayDate _makeDate(int ordinal) {
+public class SpreadsheetDateFactory implements DayDateFactory {
+    public DayDate makeDate(int ordinal) {
         return new SpreadsheetDate(ordinal);
     }
 
-    protected DayDate _makeDate(int day, Month month, int year) {
+    public DayDate makeDate(int day, Month month, int year) {
         return new SpreadsheetDate(day, month, year);
     }
 
-    protected DayDate _makeDate(int day, int month, int year) {
+    public DayDate makeDate(int day, int month, int year) {
         return new SpreadsheetDate(day, month, year);
     }
 
-    protected DayDate _makeDate(Date date) {
+    public DayDate makeDate(Date date) {
         final GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         return new SpreadsheetDate(
@@ -25,11 +27,11 @@ public class SpreadsheetDateFactory extends DayDateFactory {
         );
     }
 
-    protected int _getMinumumYear() {
+    public int getMinumumYear() {
         return SpreadsheetDate.MINIMUM_YEAR_SUPPORTED;
     }
 
-    protected int _getMaximumYear() {
+    public int getMaximumYear() {
         return SpreadsheetDate.MAXIMUM_YEAR_SUPPORTED;
     }
 }

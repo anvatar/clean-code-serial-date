@@ -59,7 +59,7 @@ import java.util.*;
 public abstract class DayDate implements Comparable, Serializable {
 
     public DayDate plusDays(int days) {
-        return DayDateFactory.makeDate(getOrdinalDay() + days);
+        return DayDateBuilder.makeDate(getOrdinalDay() + days);
     }
 
     public DayDate plusMonths(int months) {
@@ -68,13 +68,13 @@ public abstract class DayDate implements Comparable, Serializable {
         int resultYear = resultMonthAsOrdinal / 12;
         Month resultMonth = Month.fromInt(resultMonthAsOrdinal % 12 + Month.JANUARY.toInt());
         int resultDay = correctLastDayOfMonth(getDayOfMonth(), resultMonth, resultYear);
-        return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
+        return DayDateBuilder.makeDate(resultDay, resultMonth, resultYear);
     }
 
     public DayDate plusYears(int years) {
         int resultYear = getYear() + years;
         int resultDay = correctLastDayOfMonth(getDayOfMonth(), getMonth(), resultYear);
-        return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
+        return DayDateBuilder.makeDate(resultDay, getMonth(), resultYear);
     }
 
     private int correctLastDayOfMonth(int day, Month month, int year) {
@@ -142,7 +142,7 @@ public abstract class DayDate implements Comparable, Serializable {
         Month month = getMonth();
         int year = getYear();
         int last = DateUtil.lastDayOfMonth(month, year);
-        return DayDateFactory.makeDate(last, month, year);
+        return DayDateBuilder.makeDate(last, month, year);
     }
 
     /**
