@@ -5,5 +5,4 @@
 #Eclipse
 .classpath
 .project
-.settings/*
-target/*
+.settings/
